@@ -47,23 +47,24 @@ public class Television extends Electrodomestico {
 		super(precioBase, peso);
 	}
 
-	public Television(double precioBase, String color, double peso, char consumoEnergetico) {
+	public Television(double precioBase, String color, double peso, char consumoEnergetico, int resolucion, boolean sintonizadorTDT) {
 		super(precioBase, color, peso, consumoEnergetico);
-	}
-
-	public Television(int resolucion, boolean sintonizadorTDT) {
-		super();
 		this.resolucion = resolucion;
 		this.sintonizadorTDT = sintonizadorTDT;
 	}
 
-
-	// metodos
+		// metodos
 
 	public double precioFinal() {
-		double precio = 0;
-		if (resolucion >= 40)
-			precio += precioBase * 0.03 ;
+		double precio = super.precioFinal();
+		
+		if (this.resolucion >= 40) 
+			precio += precioBase * 0.3 ;
+		
+
+		if (this.sintonizadorTDT==true) 
+			precio += 50;
+		
 		return precio;
 
 	} //cierre metodo precioFinal
